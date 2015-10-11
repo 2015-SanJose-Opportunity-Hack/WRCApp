@@ -7,22 +7,25 @@ exports.employerLogin = function(req, res){
 			console.log("Error: "+err);								
 		} 
 		else{
-			if((result[0].UserName == req.body.UserName) && (result[0].Password == req.body.UserName)){
+			// console.log(" ");
+			// console.log("Record Found: "+ result[0].RolesID + " " + result[0].UserName + " " + req.body.UserName + " " + result[0].Password + " " + req.body.Password);	
+			// console.log(" ");
+			if((result[0].UserName == req.body.UserName) && (result[0].Password == req.body.Password)){
 				//req.session.UserName = login[0].UserName;
 				if(result[0].RolesID == "1"){
-					console.log("Reached Here. 1");
+					//console.log("Reached Here. 1");
 					res.render('aFirst'); 
 				}else if(result[0].RolesID == "2"){
-					console.log("Reached Here. 2"); 
+					//console.log("Reached Here. 2"); 
 					res.render('eHome'); 
 				}else{
-					console.log("Reached Here. 3"); 
-					res.render('');
+					//console.log("Reached Here. 3"); 
+					res.render('index');
 				}
 			}
 			else{
-				console.log("Reached Here. 4"); 
-				res.render('');  //Change the URL.
+				//console.log("Reached Here. 4"); 
+				res.render('index');  //Change the URL.
 			}
 		}
 	});
